@@ -13,13 +13,13 @@ const app = express();
 app.use(methodOverride('_method'));
 
 //mongoDB
-const dbURI = 'mongodb://localhost:27017/MaNguonMo';
+const dbURI = 'mongodb+srv://Yuusha001:Yuusha123789@cluster0.27q6a.mongodb.net/MaNguonMo?retryWrites=true&w=majority';
 moogoose.connect(dbURI,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then((res) => {
     //open port
-    app.listen(2000);
+    app.listen(process.env.PORT || 2000);
     console.log('Server open in port 2000 !');
 }).catch((err) => console.log(err))
 
