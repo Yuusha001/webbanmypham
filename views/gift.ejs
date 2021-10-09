@@ -3,14 +3,14 @@
     <%- include('./partials/head.ejs') %>
 <body>
     <div class="container">
-    <h1>Sửa Bài</h1>
-    <form method="POST" action="/index/<%=blog._id%>/<%=sp%>?_method=PUT" enctype="multipart/form-data">
+    <h1>Đăng Bài - Quà Tặng</h1>
+    <form action="/gift" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-25">
-            <label for="title">Product title</label>
+            <label for="title">Gift title</label>
             </div>
             <div class="col-75">
-            <input type="text" name="title" id="title" value="<%=blog.title %>" required>
+            <input type="text" name="title" id="title" required>
             </div>
         </div>
         <div class="row">
@@ -18,7 +18,7 @@
             <label for="snippet">Mô tả</label>
             </div>
             <div class="col-75">
-            <input type="text" name="snippet" id="snippet" value="<%=blog.snippet %>" required>
+            <input type="text" name="snippet" id="snippet" required>
             </div>
         </div>
         <div class="row">
@@ -26,7 +26,7 @@
             <label for="gia_goc">Giá gốc</label>
             </div>
             <div class="col-75">
-            <input type="text" name="gia_goc" id="gia_goc" value="<%=blog.gia_goc %>" required>
+            <input type="text" name="gia_goc" id="gia_goc" required>
             </div>
         </div>
         <div class="row">
@@ -34,12 +34,12 @@
                 <label for="gia_moi">Giá mới</label>
             </div>
             <div class="col-75">
-                <input type="text" name="gia_moi" id="gia_" value="<%=blog.gia_moi %>" required>
+                <input type="text" name="gia_moi" id="gia_" required>
             </div>
         </div>
         <label class="button" for="Upload">Upload File</label>
         <input type="file" accept="image/*" name="myfile" id="Upload">
-        <button>Sửa Bài</button>
+        <button>Đăng Bài</button>
     </form>
     </div>
     <%- include('./partials/footer.ejs') %>

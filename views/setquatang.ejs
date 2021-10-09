@@ -18,295 +18,48 @@
 			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
 				<h3 class="w3l_fruit">SET QUÀ TẶNG - GIFT</h3>
 				<div class="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="sanpham.html"><img src="images/37.png" alt=" " class="img-responsive" id ='qt'/></a>
-											<p>Set quà tặng nước hoa mỹ phẩm cao cấp. </p>
-											<h4>$1.194.000 <span>$1.500.000</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="Set quà tặng nước hoa mỹ phẩm cao cấp. " />
-													<input type="hidden" name="amount" value="1.194.000" />
-													<input type="hidden" name="discount_amount" value="1.000" />
-													<input type="hidden" name="currency_code" value="VND" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
+					<% if(gift.length > 0){ %>
+						<% gift.forEach(gift => { %>
+							<div class="col-md-3 w3ls_w3l_banner_left">
+								<div class="hover14 column">
+								<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+									<div class="agile_top_brand_left_grid_pos">
+										<img src="images/tag.png" alt=" " class="img-responsive" />
 									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="sanpham.html"><img src="images/38.png" alt=" " class="img-responsive" id ='qt'/></a>
-											<p>SET Blood Orange Rich In Beauty Skin</p>
-											<h4>$399.000 <span>$429.000</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="SET Blood Orange Rich In Beauty Skin" />
-													<input type="hidden" name="amount" value="399.000 " />
-													<input type="hidden" name="discount_amount" value="1.000" />
-													<input type="hidden" name="currency_code" value="VND" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
+									<div class="agile_top_brand_left_grid1">
+										<figure>
+											<div class="snipcart-item block">
+												<div class="snipcart-thumb">
+													<a href="#"><img src="/<%= gift.image %>" class="img-responsive" id ='qt'></a>
+													<p><%= gift.snippet %> </p>
+													<h4>$<%= gift.gia_moi %> <span>$<%= gift.gia_goc %></span></h4>
+												</div>
+												<div class="snipcart-details">
+													<form action="#" method="post">
+														<fieldset>
+															<input type="hidden" name="cmd" value="_cart" />
+															<input type="hidden" name="add" value="1" />
+															<input type="hidden" name="business" value=" " />
+															<input type="hidden" name="item_name" value="<%= gift.title  %> " />
+															<input type="hidden" name="amount" value="<%= gift.gia_moi %>" />
+															<input type="hidden" name="discount_amount" value="" />
+															<input type="hidden" name="currency_code" value="VND" />
+															<input type="hidden" name="return" value=" " />
+															<input type="hidden" name="cancel_return" value=" " />
+															<input type="submit" name="submit" value="Add to cart" class="button" />
+														</fieldset>
+													</form>
+												</div>
+											</div>
+										</figure>
 									</div>
-								</figure>
+								</div>
+								</div>
 							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="sanpham.html"><img src="images/39.png" alt=" " class="img-responsive"id ='qt' /></a>
-											<p>BỘ HOÀNG CUNG HỒNG 5 MÓN-JULYHOUSE.</p>
-											<h4>$993.000 <span>$1.155.000</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="BỘ HOÀNG CUNG HỒNG 5 MÓN-JULYHOUSE." />
-													<input type="hidden" name="amount" value="993.000"/>
-													<input type="hidden" name="discount_amount" value="1.000" />
-													<input type="hidden" name="currency_code" value="VND" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive">
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="#"><img src="images/40.png" alt=" " class="img-responsive"id ='qt'></a>
-											<p>BỘ LAROCHE POSAY LABORALORE DERMATOLOGIQUE</p>
-											<h4>$884.000 <span>$995.000</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="BỘ LAROCHE POSAY LABORALORE DERMATOLOGIQUE" />
-													<input type="hidden" name="amount" value="884.000" />
-													<input type="hidden" name="discount_amount" value="1.000" />
-													<input type="hidden" name="currency_code" value="VND" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="sanpham.html"><img src="images/41.png" alt=" " class="img-responsive" id ='qt'/></a>
-											<p>SOME BY MI AHA-BHA-PHA 30 DAYS MIRACLE AC SOS KIT</p>
-											<h4>$435.000 <span>$555.000</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="SOME BY MI AHA-BHA-PHA 30 DAYS MIRACLE AC SOS KIT" />
-													<input type="hidden" name="amount" value="435.000" />
-													<input type="hidden" name="discount_amount" value="1.000" />
-													<input type="hidden" name="currency_code" value="VND" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="sanpham.html"><img src="images/42.png" alt=" " class="img-responsive"id ='qt' /></a>
-											<p>SOME BY MI AHA-BHA-PHA 30 DAYS MIRACLE TRAVEL KIT</p>
-											<h4>$335.000 <span>$480.000</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="SOME BY MI AHA-BHA-PHA 30 DAYS MIRACLE TRAVEL KIT" />
-													<input type="hidden" name="amount" value="335.000" />
-													<input type="hidden" name="discount_amount" value="1.000" />
-													<input type="hidden" name="currency_code" value="VND" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="sanpham.html"><img src="images/43.png" alt=" " class="img-responsive"id ='qt' /></a>
-											<p>SOME BY MI YUJA NIACIN 30 DAYS BRIGHTENING STATER  </p>
-											<h4>$666.000 <span>$888.000</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="SOME BY MI YUJA NIACIN 30 DAYS BRIGHTENING STATER  " />
-													<input type="hidden" name="amount" value="666.000" />
-													<input type="hidden" name="discount_amount" value="1.000" />
-													<input type="hidden" name="currency_code" value="VND" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="sanpham.html"><img src="images/44.png" alt=" " class="img-responsive"id ='qt' /></a>
-											<p>SOME BY MI SNAIL TRUECICA MIRACLE REPAIR STARTER</p>
-											<h4>$666.000 <span>$888.000</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="SOME BY MI SNAIL TRUECICA MIRACLE REPAIR STARTER" />
-													<input type="hidden" name="amount" value="666.000 " />
-													<input type="hidden" name="discount_amount" value="1.000" />
-													<input type="hidden" name="currency_code" value="VND" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
+						<%})%>
+					<%} else {%>
+						<p>Nothing to display</p>
+					<%}%>
 					<div class="clearfix"> </div>
 				</div>
 			</div>

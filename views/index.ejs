@@ -63,6 +63,55 @@
 					<div class="clearfix"> </div>
 				</div>
 			</div>
+			<div class="clearfix"></div>
+			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+				<h3 class="w3l_fruit">Quà Tặng</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
+					<% if(gift.length > 0){ %>
+						<% gift.forEach(gift => { %>
+							<div class="col-md-3 w3ls_w3l_banner_left">
+								<div class="hover14 column">
+								<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+									<div class="agile_top_brand_left_grid_pos">
+										<img src="images/tag.png" alt=" " class="img-responsive" />
+									</div>
+									<div class="agile_top_brand_left_grid1">
+										<figure>
+											<div class="snipcart-item block">
+												<div class="snipcart-thumb">
+													<a href="#"><img src="/<%= gift.image %>" class="img-responsive" id ='qt'></a>
+													<p><%= gift.snippet %> </p>
+													<h4>$<%= gift.gia_moi %> <span>$<%= gift.gia_goc %></span></h4>
+												</div>
+												<div class="snipcart-details">
+													<form action="#" method="post">
+														<fieldset>
+															<input type="hidden" name="cmd" value="_cart" />
+															<input type="hidden" name="add" value="1" />
+															<input type="hidden" name="business" value=" " />
+															<input type="hidden" name="item_name" value="<%= gift.title  %> " />
+															<input type="hidden" name="amount" value="<%= gift.gia_moi %>" />
+															<input type="hidden" name="discount_amount" value="" />
+															<input type="hidden" name="currency_code" value="VND" />
+															<input type="hidden" name="return" value=" " />
+															<input type="hidden" name="cancel_return" value=" " />
+															<input type="submit" name="submit" value="Add to cart" class="button" />
+														</fieldset>
+													</form>
+												</div>
+											</div>
+										</figure>
+									</div>
+								</div>
+								</div>
+							</div>
+						<%})%>
+					<%} else {%>
+						<p>Nothing to display</p>
+					<%}%>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
 		</div>
 		<div class="clearfix"></div>
 	</div>

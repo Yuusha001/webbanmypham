@@ -6,6 +6,7 @@ const { render } = require('ejs');
 const moogoose = require('mongoose');
 const User = require('./Models/User');
 const Product = require('./Models/Products');
+const Gift = require('./Models/Gift');
 var methodOverride = require('method-override'); 
 
 //express app
@@ -34,9 +35,13 @@ app.use(morgan('dev'));
 
 //routing
 app.get('/',(req,res) => {
-    Product.find().then((result) => {
-        res.status(200).render('index', {title: 'Home', mota: 'Trang Chủ', products: result});
-    }).catch((err) => {
+    Product.find().then((result1) => {
+        Gift.find().then((result) => {
+            res.status(200).render('index', {title: 'Home', mota: 'Trang Chủ', products: result1, gift: result});
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }).catch((err)=>{
         console.log(err);
     })
 });
@@ -70,7 +75,12 @@ app.get('/products',(req,res) => {
 });
 
 app.get('/setquatang',(req,res) => {
-    res.status(200).render('setquatang', {title: 'Sét quà tặng', mota: 'SET QUÀ TẶNG - GIFT'});
+    Gift.find().then((result) => {
+        res.status(200).render('setquatang', {title: 'Sét quà tặng', mota: 'SET QUÀ TẶNG - GIFT', gift: result});
+    }).catch((err)=>{
+        console.log(err);
+    })
+    
 });
 
 app.get('/thanhtoan',(req,res) => {
@@ -85,13 +95,23 @@ app.get('/login/:id/post',(req,res) => {
     res.status(200).render('post', {title: 'Đăng Bài', mota: 'Đăng bài'});
 });
 
+app.get('/login/:id/gift',(req,res) => {
+    res.status(200).render('gift', {title: 'Quà Tặng', mota: 'Quà Tặng'});
+});
+
 app.get('/find',(req,res) => {
-    Product.find().then((result) => {
-        res.render('find',{title:'All Posts', products: result});
-    }).catch((err) => {
+    Product.find().then((result1) => {
+        Gift.find().then((result) => {
+            res.status(200).render('find', {title: 'All Post', products: result1, gift: result});
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }).catch((err)=>{
         console.log(err);
     })
 });
+
+
 
 //function 
 app.post('/register',(req,res) => {
@@ -160,23 +180,41 @@ app.post('/post', upload ,(req,res) => {
     })
 });
 
-app.delete('/index/:id',(req, res) => {
-    const id = req.params.id;
-    Product.findByIdAndDelete(id).then(result =>{
-        res.redirect('/find');
+app.post('/gift', upload ,(req,res) => { 
+    const gift = new Gift({
+        title : req.body.title,
+        snippet : req.body.snippet,
+        gia_goc : req.body.gia_goc,
+        gia_moi : req.body.gia_moi,
+        image: req.file.originalname      
     });
-})
-
-app.get('/index/:id/edit',(req, res) =>{
-    const id = req.params.id;
-    Product.findById(id).then(result =>{
-        res.render('update',{title: 'Update', blog: result });
+    console.log(gift);
+    gift.save().then((result)=>{
+        res.redirect('index');
     }).catch((err)=>{
         console.log(err);
     })
-})
+});
 
-app.put('/index/:id', upload, (req, res) =>{
+app.get('/index/:id/pro',(req, res) =>{
+    const id = req.params.id;
+    Product.findById(id).then(result =>{
+        res.render('update',{title: 'Update', blog: result ,sp:'pro'});
+    }).catch((err)=>{
+        console.log(err);
+    })  
+});
+
+app.get('/index/:id/gift',(req, res) =>{
+    const id = req.params.id;
+    Gift.findById(id).then(result =>{
+        res.render('update',{title: 'Update', blog: result, sp:'gift'});
+    }).catch((err)=>{
+        console.log(err);
+    })  
+});
+
+app.put('/index/:id/pro', upload, (req, res) =>{
     const id = req.params.id;
     const update = {
         title : req.body.title,
@@ -192,4 +230,37 @@ app.put('/index/:id', upload, (req, res) =>{
     }).then(result =>{
         res.redirect('/find');
     });
-})
+});
+
+app.put('/index/:id/gift', upload, (req, res) =>{
+    const id = req.params.id;
+    const update = {
+        title : req.body.title,
+        snippet : req.body.snippet,
+        gia_goc : req.body.gia_goc,
+        gia_moi : req.body.gia_moi,
+        image: req.file.originalname     
+    };
+    Gift.findByIdAndUpdate(id, update, {
+        new: true,
+        upsert: true,
+        rawResult: true // Return the raw result from the MongoDB driver
+    }).then(result =>{
+        res.redirect('/find');
+    });
+});
+
+app.delete('/index/pro/:id',(req, res) => {
+    const id = req.params.id;
+    Product.findByIdAndDelete(id).then(result =>{
+        res.redirect('/find');
+    });
+});
+
+app.delete('/index/gift/:id',(req, res) => {
+    const id = req.params.id;
+    Gift.findByIdAndDelete(id).then(result =>{
+        res.redirect('/find');
+    });
+});
+

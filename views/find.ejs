@@ -6,7 +6,14 @@
 
 <body>
     <div class="main">
-        <h1>All Posts</h1>
+        <div class="top">
+            <h1>All Posts</h1>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button class="btn btn-secondary" onclick="hide2()">Only Products</button>
+                <button class="btn btn-secondary" onclick="hide1()">Only Gift</button>    
+                <button class="btn btn-secondary" onclick="show()">Display All</button>
+            </div>
+        </div>
             <table class="tableCss">
                 <tr>
                     <th>Tiêu đề</th>
@@ -17,7 +24,7 @@
                     <th></th>
                     <th></th>
                 </tr>
-                <tbody>
+            <tbody id="tb1">
                 <% if(products.length > 0){ %>
                     <% products.forEach(products => { %>
                         <tr> 
@@ -27,18 +34,36 @@
                             <td><%= products.gia_moi %></td>
                             <td><img src="/<%= products.image %>" width="100px" height="100px"></td>
                             <td> 
-                                <a class="btn btn-primary" href="/index/<%= products.id %>/edit" role="button">Update</a>
+                                <a class="btn btn-primary" href="/index/<%= products.id %>/pro" role="button">Update</a>
                             </td>
                             <td> 
-                                <a class="btn btn-primary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal" data-id="<%=products.id %>">Delete</a>
+                                <a class="btn btn-primary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal" data-id="pro/<%=products.id %>">Delete</a>
+                            </td>
+                        </tr>
+                    <%})}%>
+            </tbody>
+            <tbody id="tb2">
+                <%if(gift.length > 0){ %>
+                    <% gift.forEach(gift => { %>
+                        <tr> 
+                            <td><%= gift.title %></td>
+                            <td><%= gift.snippet %></td>
+                            <td><%= gift.gia_goc %></td>
+                            <td><%= gift.gia_moi %></td>
+                            <td><img src="/<%= gift.image %>" width="100px" height="100px"></td>
+                            <td> 
+                                <a class="btn btn-primary" href="/index/<%= gift.id %>/gift" role="button">Update</a>
+                            </td>
+                            <td> 
+                                <a class="btn btn-primary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal" data-id="gift/<%=gift.id %>">Delete</a>
                             </td>
                         </tr>
                     <%})%>
-                <%} else {%>
-                </tbody>
-            </table>
-        <p> Nothing to display </p>
-                <%}%>    
+            <%} else {%>
+                    <p> Nothing to display </p>
+            <%}%>
+            </tbody>
+        </table>    
     </div>
     <!-- Modal -->
     <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -63,10 +88,9 @@
 
 <style>
     
-    h1{
+    .top{
         text-align: center;
     }
-
     .modal-title ,.modal-body p{
         color: #000;
     }
@@ -79,44 +103,52 @@
     }
             
 /*for header*/
-.tableCss th
-{
-    background-color: #0094ff;
-    color:#fff;
-    padding: 10px;
-    text-align:center;
-}
-            
-.tableCss td
-{
-    min-width: 100px;
-    text-align: center;
-    border: solid 1px #e6e5e5;
-    width: fit-content;
-}
-            
-/*for body*/
- tbody
-{
-    background-color: #e9e7e7;
-    color: #000;
-    padding: 10px;
-}
+    .tableCss th
+    {
+        background-color: #0094ff;
+        color:#fff;
+        padding: 10px;
+        text-align:center;
+    }
+                
+    .tableCss td
+    {
+        min-width: 100px;
+        text-align: center;
+        border: solid 1px #e6e5e5;
+        width: fit-content;
+    }
+                
+    /*for body*/
+    tbody
+    {
+        background-color: #e9e7e7;
+        color: #000;
+        padding: 10px;
+    }
 
 
-body{
-    background: url('/images/BG.jpg');
-    background-size: cover;
-}
+    body{
+        background: url('/images/BG.jpg');
+        background-size: cover;
+    }
 
-.main{
-    width: 90%;
-    height: max-content;
-    margin: auto;
-    color: #fff;
-    background: rgba(48, 43, 43, 0.533);
-    margin-bottom: 50px;
-}
+    .main{
+        width: 90%;
+        height: max-content;
+        margin: auto;
+        color: #fff;
+        background: rgba(48, 43, 43, 0.533);
+        margin-bottom: 50px;
+    }
+
+    #tb1{
+        display : table-row-group;
+    }
+
+    #tb2{
+        display : table-row-group;
+    }
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script> 
@@ -136,5 +168,20 @@ body{
             deleteForm.submit();
         };
     });
+
+    function hide1() {
+        document.getElementById("tb1").style.display = 'none';
+        document.getElementById("tb2").style.display = 'table-row-group';
+    }
+    function hide2() {
+        document.getElementById("tb2").style.display = 'none';
+        document.getElementById("tb1").style.display = 'table-row-group';
+    }
+
+    function show()
+    {
+        document.getElementById("tb1").style.display = 'table-row-group';
+        document.getElementById("tb2").style.display = 'table-row-group';
+    }
 </script>
 </html>
