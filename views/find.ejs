@@ -12,9 +12,10 @@
                 <button class="btn btn-secondary" onclick="hide2()">Only Products</button>
                 <button class="btn btn-secondary" onclick="hide1()">Only Gift</button>    
                 <button class="btn btn-secondary" onclick="show()">Display All</button>
+                <button class="btn btn-secondary" onclick="ExportToExcel('xlsx')">Export excel</button>
             </div>
         </div>
-            <table class="tableCss">
+            <table class="tableCss" id="tblData">
                 <tr>
                     <th>Tiêu đề</th>
                     <th>Mô Tả</th>
@@ -153,6 +154,7 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script> 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function(){
         var post_id;
@@ -182,6 +184,14 @@
     {
         document.getElementById("tb1").style.display = 'table-row-group';
         document.getElementById("tb2").style.display = 'table-row-group';
+    }
+
+    function ExportToExcel(type, fn, dl) {
+       var elt = document.getElementById('tblData');
+       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+       return dl ?
+         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+         XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
     }
 </script>
 </html>
